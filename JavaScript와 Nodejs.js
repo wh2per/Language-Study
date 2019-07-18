@@ -139,3 +139,103 @@ Url {
     href: '/' }
 
 8. 존재하지 않는 정보에 대한 요청이 들어왔을 때 Not found 오류 메시지를 전송하는 방법
+ex)
+var pathname = url.parse(_url,true).pathname;
+if(pathname === '/'){
+  // HTML 출력
+  response.writeHead(200);   // 파일을 성공적
+}else{
+  response.writeHead(404);  // 파일을 찾을 수 없을때
+  response.end('not found');
+}
+
+9. 조건문을 활용해서 홈페이지를 표현하는 방법
+queryData.id 가 undefined 인지 조건문으로 검사하여 홈페이지를 표현
+ex)
+if(pathname === '/'){   // path가 없는 경우라면
+  if(queryData.id === undefined){
+    var title = 'Welcome';
+    var description = 'Hello, Node.js';
+    // HTML 출력
+    response.writeHead(200);   // 파일을 성공적
+  }else{
+    // HTML 출력
+    response.writeHead(200);   // 파일을 성공적
+  }
+}else{
+  response.writeHead(404);  // 파일을 찾을 수 없을때
+  response.end('not found');
+}
+
+10. 특정 디렉토리 하위에 있는 파일과 디렉토리의 목록 출력
+ex)
+var testFolder = './data';
+var fs = require ('fs');
+
+fs.readdir(testFolder, function(error, filelist){
+  console.log(filelist);
+})
+
+11. 디렉토리에 있는 파일들의 이름을 이용해서 글 목록을 생성하는 기능
+ex)
+fs.readdir('./data', function(error, filelist){
+  var title = 'Welcome';
+  var description = 'Hello, Node.js';
+  var list = '<ul>';
+  var i = 0;
+  while(i < filelist.length){
+    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+    i = i + 1;
+  }
+  list = list+'</ul>';
+  var template = `
+  <!doctype html>
+  <html>
+  <head>
+    <title>WEB1 - ${title}</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1><a href="/">WEB</a></h1>
+    ${list}                         // 생성한 리스트 HTML코드를 삽입
+    <h2>${title}</h2>
+    <p>${description}</p>
+  </body>
+  </html>
+  `;
+  response.writeHead(200);
+  response.end(template);
+})
+
+12. nodejs 비동기 처리 방식
+* 동기
+ex)
+console.log('A');
+var result = fs.readFileSync('syntax/sample.txt', 'utf8');
+console.log(result);
+console.log('C');
+>> A
+>> B
+>> C
+
+* 비동기
+ex)
+console.log('A');
+fs.readFile('syntax/sample.txt', 'utf8', function(err, result){
+    console.log(result);
+});
+console.log('C');
+>> A
+>> C
+>> B
+
+13. nodejs callback 함수
+ex)
+var a = function(){
+  console.log('A');
+}
+function slowfunc(callback){
+  callback();
+}
+slowfunc(a);
+>> A
