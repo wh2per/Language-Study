@@ -1,0 +1,95 @@
+1. CSS는 style 태그로 묶여있음
+<style>
+	a{					/* a는 선택자라고 부름 */
+		color:black;	/* 효과라고 부름 */
+	}
+</style>
+
+2. 코드에 style 속성을 이용하여 CSS코드를 직접 입력할 수 있음
+ex)
+<li><a href="2.html" style="color:red">CSS</a></li>
+
+3. CSS 효과
+ex)
+<style>
+	a{
+		color : black;			/* 글자색 */
+		text-decoration : none;	/* 글자 꾸밈*/
+		font-size:45px;			/* 글자 크기 */
+		text-align:center;		/* 글자 정렬 */
+		padding : 20px;			/* 컨텐트와 테두리 사이 여백 */
+		margin : 20px;			/* 테두리와 테두리 사이 간격 */
+	}
+</style>
+
+4. 클래스
+HTML에 클래스를 추가해주고 CSS에는 클래스이름 앞에 .을 붙힘
+ex)
+<style>
+    .saw{
+      color:gray;
+    }
+</style>
+<li><a href="1.html" class="saw">HTML</font></a></li>
+
+5. 클래스는 띄어쓰기로 구분하여 여러개의 값이 들어갈 수 있음
+가장 마지막 순서의 클래스 style을 따라감
+ex)
+<li><a href="2.html" class="saw active">CSS</font></a></li>
+
+6. ID 선택자
+클래스 선택자와 id선택자가 붙으면 id선택자를 따라가고
+클래스 선택자와 태그선택자가 붙으면 클래스 선택자를 따라감
+ID > 클래스 > 태그
+ex)
+<style>
+    #active{
+      color:red;
+	}
+</style>
+<li><a href="2.html" class="saw" id="active">CSS</font></a></li>
+
+7. 박스모델
+h1 태그는 기본적으로 줄바꿈이 들어감 -> css에 display : inline을 추가하면 줄바꿈안함
+a 태그는 기본적으로 줄바꿈이 안들억암 -> css에 display:blcok을 추가하면 줄바꿈
+
+8. 태그는 ,로 여러개 추가할 수 있음
+ex)
+h1, a{
+	color : black;
+}
+
+9. 그리드
+그리드는 자동으로 커지고 작아지므로 사용하기 편리함
+
+10. 반응형 디자인
+화면의 크기에 따라서 웹페이지의 각 요소들이 반응해서 최적화된 모습으로 바뀌는 것
+ex)
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      div{
+        border:10px solid green;
+        font-size:60px;
+      }
+      @media(max-width:800px) {		/* media쿼리로 화면 크기를 검사 */
+        div{
+          display:none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Responsive
+    </div>
+  </body>
+</html>
+
+11. CSS 재사용
+헤드 태그 안에 넣어주자!
+ex)
+<link rel="stylesheet" href="style.css">
