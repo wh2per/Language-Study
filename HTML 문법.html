@@ -73,3 +73,25 @@ ex)
 *span
 ex)
 <span> </span>
+
+15. form 태그
+웹브라우저에서 서버로 데이터를 전송할 때 사용하는 기능
+ex)
+<form action="http://localhost:3000/process_create">
+  <p><input type="text" name="title"></p>
+  <p>
+    <textarea name="description"></textarea>
+  </p>
+  <p>
+    <input type="submit">
+  </p>
+</form>
+// title에 A, description에 B를 넣고 제출하면
+// URL은 http://localhost:3000/process_create?title=A&description=B
+
+* 내용을 숨기기 위해서는 form 태그에 method="post"을 추가
+<form action="http://localhost:3000/process_create method="post"></form>
+//URL은 http://localhost:3000/process_create
+
+16. placeholder = "abc"
+form태그에 placeholder를 추가하면 도움말을 추가할 수 있음
