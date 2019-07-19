@@ -2,8 +2,8 @@
 ex)
 var http = require('http');
 var fs = require('fs');
-var app = http.createServer(function(request,response){
-    var url = request.url;
+var app = http.createServer(function(request,response){   // request : 웹브라우저가 보낸 정보
+    var url = request.url;                                // response : 웹브라우저에게 전송할 정보
     if(request.url == '/'){
       url = '/index.html';
     }
@@ -239,3 +239,33 @@ function slowfunc(callback){
 }
 slowfunc(a);
 >> A
+
+13. PM2(패키지 매니저) 사용법
+서버 시작 : pm2 start main.js
+모니터 : pm2 monit
+서버 목록 : pm2 list
+서버 중지 : pm2 stop main.js
+서버 재시작 : pm2 restart main.js
+서버 삭제 : pm2 delete main.js
+
+14. POST 방식으로 전송된 데이터를 받아서 파일로 저장하는 방법
+* request.on('data',function(data){});
+데이터가 엄청나게 많으면 데이터를 쪼개서 수신하여 콜백함수 실행
+ex)
+var body = '';
+request.on('data',function(data){
+    body = body + data;
+});
+
+* request.on('end',function(data){});
+데이터 수신이 끝나면 콜백함수 실행
+ex)
+var qs = require('querystring');
+
+request.on('end',function(data){
+  var post = qs.parse(body);
+  console.log(post);
+});
+>> { title : 'A', description : 'B'}
+
+15. 전송된 POST 데이터를 받아서 파일에 저장
