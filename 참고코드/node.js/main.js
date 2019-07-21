@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
-var path = requeir('path');
+var path = require('path');
 var template = require('./lib/template.js');
 var sanitizeHtml = require('sanitize-html');
 
