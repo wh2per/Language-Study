@@ -367,3 +367,7 @@ fs.readdir('./data', function(error, filelist){
 * 허용할 태그는 객체로 만들어 sanitizeHtml() 함수의 두 번째 인자로 넘겨준다
 ex)
 var sanitizedDescription = sanitizeHtml(description, {allowedTags:['h1']});
+
+* sanitize-html 설치 방법
+해당 프로젝트 경로에 간후 cmd창에 npm init을 입력
+npm install -S sanitize-html    // -S는 해당 프로젝트만 적용, -g는 전역으로 설치
