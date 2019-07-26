@@ -38,4 +38,12 @@ db.query(`select * from topic`,function(error, topics){
   }
 });
 
-6.
+6. query를 던질 때 특정 변수값들을 쿼리문에 직접 넣지말고 ?를 사용하자!
+?를 사용한 후, 변수에 들어갈 값들을 배열로 만들어 매개변수로 전달
+결과는 똑같지만 공격 의도가 있는 쿼리문을 세탁해주는 기능을 함
+ex)
+ db.query(`select * from topic where id=?`,[queryData.id],function(error2, topic){
+   // 콜백함수
+ });
+
+7. 
