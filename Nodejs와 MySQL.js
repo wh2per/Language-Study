@@ -45,5 +45,3 @@ ex)
  db.query(`select * from topic where id=?`,[queryData.id],function(error2, topic){
    // 콜백함수
  });
-
-7. 
