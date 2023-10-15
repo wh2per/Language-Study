@@ -1123,7 +1123,7 @@
     * 시스템의 세부 사항에 대한 변경 없이 SCP로 이전
       + Direct Connect는 이전 과정에서 서비스 연속성을 보장하고 연계를 위한 시스템 세부사항의 변경을 최소화
 
-#### 3. GSLB를 활용한 서버 부하 분산
+### 3. GSLB를 활용한 서버 부하 분산
   - 사용자가 도메인 URL을 입력하면 Local DNS는 상위 DNS로 질의를 요청하고 최종적으로 GSLB에 DNS 질의가 전달
   - GSLB는 On-premises 데이터센터와 Samsung Cloud Platform의 양측 Load Balancer에 대해 헬스 체크, 응답시간 파악 등 상태 정보를 종합 판단하여 저장
   - GSLB는 위 판단 정보를 기반으로 사용자 설정 또는 정책에 맞는 IP 주소를 반환
@@ -1132,7 +1132,7 @@
     * 장애 혹은 재난시 사이트 복구(DR)와 비즈니스 연속성 보장
       + GSLB는 트래픽 경로에 대한 최적화를 통해 사용자의 환경 변경 없이 서비스 연속성을 제공
 
-#### 4. VPC Peering을 통한 VPC간 통신
+### 4. VPC Peering을 통한 VPC간 통신
   - VPC Peering은 사설 IP 주소 기반의 통신 서비스로 네트워크를 이용하여 서로 다른 VPC를 연결하는 서비스
   - 동일 프로젝트의 경우, VPC Peering을 생성하여 요청 VPC, 승인 VPC를 각각 선택한 뒤 승인 VPC에서 Peering 승인
   - 다른 프로젝트에 위치한 VPC와 사설 통신이 필요한 경우, 승인이 필요한 VPC ID와 해당 VPC가 위치한 프로젝트 ID를 확인하여 상품 신청
@@ -1141,7 +1141,7 @@
       + Direct Connect 상품을 통한 VPC 간 통신도 가능하지만 고객사에 위치한 Customer Router 장비를 경유하여 상호 통신 되는 구조로 네트워크 경로상 비효율적
       + VPC Peering을 구성하게 되면 VPC 간 직접 연결 가능하게 되어 통신 경로가 최적화 되며 VPC 간 원하는 리소스에 바로 액세스 가능
 
-#### 5. Transit Gateway를 활용한 네트워크 확장
+### 5. Transit Gateway를 활용한 네트워크 확장
   - Transit Gateway는 고객이 원하는 네트워크를 Samsung Cloud Platform과 연결하거나, 다수의 VPC 연결을 제공해주는 상품
   - 동일 프로젝트에 생성 되었으나 다른 리전에 위치한 다수의 VPC 간 통신은 Transit Gateway을 이용
   - 프로젝트 내 위치한 특정 VPC가 고객사에 위치한 On-premises 시스템과의 통신이 필요한 경우, Transit Gateway를 이용
@@ -1154,7 +1154,7 @@
     * 다른 위치나 서로 다른 프로젝트에서 생성된 VPC 네트워크와 연동 구성
       + 기 구성 된 Transit Gateway와 다른 프로젝트의 Transit Gateway를 Peering 기능을 사용하여 서로 연결하고 라우팅 및 보안정책을 설정
 
-#### 6. Cloud WAN 기반 Cloud Integrated Network 서비스
+### 6. Cloud WAN 기반 Cloud Integrated Network 서비스
   - Cloud WAN은 글로벌 네트워크 백본 인프라를 활용하여 국내외 SCP Region 또는 사용자 거점 간 Multi-point N:N 연결을 트래픽 사용량 기반으로 제공하는 상품
   - Project 단위로 Cloud WAN Network를 신청하고 Cloud WAN Network에 용도별 Segment를 생성한 뒤 국내외 서비스를 사용할 거점 위치를 선택
   - Transit Gateway를 구성하여 다수의 VPC를 연결하고 VPC 간, VPC와 On-premises 네트워크 통신에 필요한 라우팅과 방화벽 정책을 설정
@@ -1168,7 +1168,7 @@
     * Inter Region 간 고객 네트워크와 VPC 네트워크 연결
     * Multi-segment 기반 Site to Site Global WAN 통신
 
-#### 7. Endpoint를 활용한 외부 네트워크에서 VPC로의 Private 연결
+### 7. Endpoint를 활용한 외부 네트워크에서 VPC로의 Private 연결
   - Endpoint는 Direct Connect, Transit Gateway, VPC peering으로 VPC와 연결된 외부 네트워크에서 Private 연결을 통해 SCP 서비스에 접근할 수 있는 진입점을 제공하는 역할
   - On-premises 환경과 Samsung Cloud Platform 간 전용회선 연결을 준비하여 Direct Connect에 연
   - SCP의 다른 프로젝트 VPC에서 접근하는 경우 VPC Peering 사전 구성을 통해 Endpoint가 구성된 VPC와 연동
@@ -1178,7 +1178,7 @@
     * 클라우드 전환 단계에서의 File Storage 병행 사용
       + Direct Connect로 확장된 고객사 On-premises의 서버에서 자체 File Storage와 Cloud 환경에 구축되어 있는 File Storage를 동시에 마운트
 
-#### 8. Auto-Scaling을 통한 서버 자동 확장
+### 8. Auto-Scaling을 통한 서버 자동 확장
   - 부하가 많지 않은 상황에서 Auto-Scaling Group은 초기 설정 자원만큼만 가동되어 운영
   - 서비스 요청량이 증가하여 시스템의 사용률이 운영자가 사전 설정한 임계값(CPU, MEM, Network, Disk I/O)에 도달하면, Auto-Scaling Instance는 사전 정의된 단위만큼 추가 Virtual Server를 프로비저닝
   - Load Balancer 에 새로 기동된 Virtual Server Instance의 IP가 추가되어 부하 분산에 포함
@@ -1188,7 +1188,7 @@
     * 온라인 쇼핑몰 구축
     * 미디어 서비스 front-end 구축
 
-#### 9. Placement Group을 활용한 Virtual Server의 Rack 분산 배치
+### 9. Placement Group을 활용한 Virtual Server의 Rack 분산 배치
   - Placement Group은 사용자가 지정한 Virtual Server 그룹을 서로 다른 Rack으로 분산 배치하여, Rack 전원이나 TOR(Top of Rack) 등 장애에 대비해 Application 가용성을 보다 강화하는 서비스
   - 서비스 가용성을 우선적으로 고려해야하는 Application의 경우 Placement Group을 사용하여 장애 도메인을 분산하여 추가 가용성을 확보
   - Redis, Elasticsearch 와 같이 과반수에 의해 Fault Tolerance 보장이 필요한 서비스들은 Multi-AZ와 함께 Placement Group을 사용하면, Zone과 Rack을 나눠서 안정적으로 운영 가능
@@ -1204,7 +1204,7 @@
     * Multi-AZ와 함께 사용하여 AZ별 Rack분산 배치
       + Application에 따라 Active-Active 서비스가 필요하거나, Fault Tolerance 보장이 필요한 서비스의 경우 Multi-AZ와 함께 Placement Group을 사용
 
-#### 10. 고가용성 3-Tier 아키텍처
+### 10. 고가용성 3-Tier 아키텍처
   - Multi-AZ는 여러 가용 영역에 걸쳐 서비스를 배포함으로써, 인스턴스의 SPOF를 제거하고 Downtime을 최소화하는 아키텍처
   - 3-Tier 아키텍처는 Presentation tier, Application tier, Database tier로 구성된 구성된 아키텍처로, 각 tier는 고유한 Infrastructure에서 구동되므로 다른 Tier에 영향을 주지 않고 업그레이드 되거나 자원을 확장/축소 가능
   - WEB 또는 WAS 서버간의 파일 공유에 대한 요건이 있을 경우 File Storage를 생성
@@ -1212,7 +1212,7 @@
   - 사용사례
     * MES(Manufacturing execution system)
 
-#### 11. Object Storage를 활용한 멀티 Web Instance간 컨텐츠 공유
+### 11. Object Storage를 활용한 멀티 Web Instance간 컨텐츠 공유
   - Block Storage나 File Storage와는 달리 접속 URL과 key만 획득하면 어디서나 Amazon S3 API를 사용하여 파일 업/다운로드가 가능
   - Samsung Cloud Platform 내의 다른 Tenant가 Tenant A에서 사용하고 있는 Object Storage 내 Bucket을 사용하고자 하는 경우 Bucket 오너에게 요청하여 Endpoint URL과 Key를 획득해 해당 Bucket에 접근
   - 다른 CSP는 물론이고 네트워크 경로만 확보된다면 On-premises에서도 접근이 가능
@@ -1221,14 +1221,14 @@
     * CDN과 Object Storage를 사용한 컨텐츠 연계
       + CDN을 통해 컨텐츠를 배포할 때 정적인 컨텐츠(html, css 등)의 원본 서버로 Static Website hosting 이 활성화 된 Object Storage의 bucket을 지정하여 사용 할 수 있음
 
-#### 12. Multi-AZ 환경에서 File Storage, Object Storage 활용
+### 12. Multi-AZ 환경에서 File Storage, Object Storage 활용
   - Multi-AZ가 적용된 File Storage, Object Storage는 별도의 소프트웨어 설치나 인프라 구축 없이 AZ간 데이터를 실시간 동기화를 제공
   - Multi-AZ 사용 여부는 최초 생성 시에만 설정이 가능
   - 평상시에는 AZ1에 위치한 Active Storage를 사용하고 재해시에는 AZ2에 위치한 Standby Storage로 경로가 전환
   - 사용사례
     * 주요 인프라 구성 요소의 고가용성 확보
 
-#### 13. On-Premises 환경의 File Storage Offloading
+### 13. On-Premises 환경의 File Storage Offloading
   - SCP의 Direct Connect/Transit Gateway 상품과 VPC Endpoint 기능을 활용하여 On-Premises 내부 서버에서 SCP 내부의 File Storage 볼륨을 마운트하여 사용하도록 구성할 수 있음
   - On-Premises 환경에서 시스템 내 NAS 볼륨과 SCP File Storage 볼륨을 동시에 연결하여 마이그레이션 하거나 사용
   - SCP 내부의 Virtual Server에서 On-Premises와 연결된 SCP의 File Storage 볼륨을 연결하여 On-Premises의 서버와 동시에 사용
@@ -1236,7 +1236,7 @@
     * SCP File Storage로 고객사 NAS 대체
     * On-Premises 서버의 Hybrid NAS 활용
 
-#### 14. 데이터 장기보관을 위한 Archive Storage 활용
+### 14. 데이터 장기보관을 위한 Archive Storage 활용
   - Archive Storage는 장기 보관 데이터를 위한 저가형 스토리지 서비스로 Object Storage에 저장된 데이터를 보다 저렴한 스토리지로 전송
   - 사용자는 아카이빙을 수행할 폴더 또는 파일을 선택하고 이에 대한 스케줄(최소 1일 ~ 최대 3,650일)을 설정
   - Archive Storage에 저장된 데이터 중 복구가 필요한 경우, 사용자가 지정한 Object Storage의 버킷으로 복구를 수행
@@ -1245,7 +1245,7 @@
       + Archive Storage을 이용하면 저장 후 특정 기한이 지난 데이터에 대해 설정한 스케줄링으로 아카이빙 할 수 있음
     * 빠른 복구 기능을 통한 장기 보관 데이터로의 용이한 접근
 
-#### 15. VPC를 활용한 Virtual Server 기반 DMZ 웹 서비스
+### 15. VPC를 활용한 Virtual Server 기반 DMZ 웹 서비스
   - DNS서비스로 해당 공인IP에 대한 Domain name을 손쉽게 등록
   - 사용사례
     * VPC를 통한 퍼블릭 웹 서비스 제공
@@ -1253,7 +1253,7 @@
     * 서비스형 보안솔루션과 보안그룹 적용을 통한 웹보안성 확보
       + 최소한의 허용정책으로 보안그룹을 설정하여 외부 공격으로부터 인프라를 보호    
 
-#### 16. 서로 다른 VPC에 생성된 자원의 Load Balancer 구성
+### 16. 서로 다른 VPC에 생성된 자원의 Load Balancer 구성
   - VPC#1에 생성된 Load Balancer에 VPC#2 서버 자원을 추가하기 위해 VPC#1과 VPC#2를 VPC Peering으로 연결
   - WEB 서비스는 L7 HTTP로 선택하여 URL 기반으로 HTTP 트래픽에 대해 분산 처리하도록 서비스를 생성
   - WAS 서비스는 L4 TCP로 IP와 Port 기반으로 동작하도록 서비스를 생성
@@ -1262,14 +1262,14 @@
     * 다른 VPC에 생성된 서버 자원 Load Balancer 서버 그룹에 추가 가능
       + VPC Peering 된 다른 VPC 내 생성된 서버 자원을 LB Link IP를 이용하여 서버 그룹에 추가하여 확장된 부하 분산 서비스를 제공 가능
 
-#### 17. 3rd party 제품을 활용한 Load Balancer 아키텍처
+### 17. 3rd party 제품을 활용한 Load Balancer 아키텍처
   - On-premises 환경에서 적용 중인 특별한 부하 분산 기능을 SCP 전환 후에도 유지해야 하는 경우
   - VM 기반으로 기 운영 중인 Load Balancer가 있어 해당 라이선스를 재활용하고자 하는 수요가 발생
   - Transit Gateway를 구성하여 3rd Party Load Balancer가 위치한 VPC와 타 서버가 위치한 VPC가 통신할 수 있는 라우팅 경로와 방화벽 정책을 설정
   - 사용사례
     * 별도 Load Balancer 구성을 통한 기존 서버 부하 분산 방식 유지
 
-#### 18. Object Storage를 활용한 데이터 백업
+### 18. Object Storage를 활용한 데이터 백업
   - Virtual Server의 OS 이미지, Database, 사용자의 폴더/파일에 대한 백업을 손쉽게 가능
   - Object Storage를 활용할 경우 데이터를 즉시 액세스 가능하고 비용적인 효율성뿐만 아니라 안정성도 동시에 확보 가능
   - 생성된 Snapshot은 Backup Master를 통해 Object Storage로 저장
@@ -1283,7 +1283,7 @@
     * 사용자 데이터 백업
       + Virtual Server 또는 Bare Metal Server의 디렉토리와 파일을 백업
 
-#### 19. 재해 복구
+### 19. 재해 복구
   - Region 사이의 복제 회선을 통해 Object Storage 데이터를 동기화
   - 재난 상황이 발생하면 Virtual Server 자원을 신청하고 Object Storage에 백업된 OS 이미지를 활용해 해당 서버를 복구해 서비스를 재개
   - Region 사이의 복제 회선을 통해 서버를 동기화
@@ -1295,13 +1295,13 @@
       + 서울 Region만으로 서비스를 제공하는 퍼블릭 클라우드 사업자를 선택한 고객의 경우, 서비스 사업자 내에서는 국내에 DR Site를 구성할 수 없음
       + SCP East Region은 서울 Region과 지리적으로 충분히 떨어져 있고 지진과 같은 재난상황에서도 DR Site로 운영 가능
 
-#### 20. Global CDN을 활용한 웹 콘텐츠 전송
+### 20. Global CDN을 활용한 웹 콘텐츠 전송
   - Global CDN은 SCP 또는 On-premises에 구성된 웹 서버 또는 Object Storage를 통해 제공된 정적 콘텐츠를 글로벌 콘텐츠 전송 네트워크를 통해 보다 빠른 전송이 가능하도록 하는 서비스
   - Global CDN 상품을 통해 사용자와 가까운 곳에서 정적 콘텐츠를 전송함으로써 전송 속도를 향상
   - 사용사례
     * 고성능 웹 서비스
 
-#### 21. Cross-Region 복제를 활용한 DR 아키텍처
+### 21. Cross-Region 복제를 활용한 DR 아키텍처
   - 별도의 소프트웨어 설치나 인프라 구축 없이 Samsung Cloud Platform 내에서 리전 간 DR 복제 환경을 구축하는 방식
   - Backup 상품을 통해 저장된 VM 백업본을 DR 복제 기능을 사용하여 타 리전에 있는 저장소로 전송
   - 사용사례
@@ -1310,7 +1310,7 @@
     * 주요 인프라 구성 요소의 복제본 확보
       + File Storage / Object Storage DR 복제 기능을 사용하여 워크로드 재가동을 고려하지 않고 별도의 물리적 공간에 필요 데이터 복제본만 확보
 
-#### 22. HPC Cluster 서비스
+### 22. HPC Cluster 서비스
   - 고객은 File Storage를 클러스터 전체에 마운트하여 공유 볼륨으로 사용 가능
   - 효율적으로 작업을 배치하고 관리하기 위해 오픈소스 Job Scheduler인 Slurm을 자동으로 설치 및 제공
   - 병렬 시뮬레이션 작업을 위해 기본적인 GCC 컴파일러와 Open MPI도 함께 제공
@@ -1321,7 +1321,7 @@
     * 대규모 RAM 메모리 필요 시뮬레이션 용도
       + HPC Cluster 상품은 Bare Metal Server를 계산 노드로 이용
 
-#### 23. Container기반 Web Application
+### 23. Container기반 Web Application
   - Kubernetes는 수많은 컨테이너 애플리케이션을 자동화하여 관리하기 때문에 분산 시스템 환경을 탄력적으로 실행 및 관리할 수 있도록 제공되는 플랫폼
   - Kubernetes는 애플리케이션의 확장과 장애 조치의 용이성을 제공하고, 쉽고 빠르게 지속적으로 배포할 수 있는 환경을 제공하여, 웹 애플리케이션 시스템을 성공적으로 구축/운영
   - 클러스터 외부로 내부 서비스의 HTTP와 HTTPS 경로를 노출하기 위해서 Kubernetes의 Ingress Controller가 필요
@@ -1331,7 +1331,7 @@
     * 사용자의 폭증에 의한 자원 증설이 필요한 시스템의 컨테이너 전환
       + 사용자 폭증을 예측할 수 없는 경우를 대비하여 Kubernetes의 Auto-Scaling을 적용
 
-#### 24. 컨테이너 애플리케이션 환경의 DMZ 네트워크 구성
+### 24. 컨테이너 애플리케이션 환경의 DMZ 네트워크 구성
   - Kubernetes는 다수의 컨테이너 애플리케이션을 자동화 하여 관리한다는 점에서 분산 시스템 환경을 탄력적으로 실행 및 관리할 수 있는 개방형 플랫폼
   - DMZ 역할로 구성한 VPC 영역에는 Reverse Proxy를 구성하여 보안 요구사항을 충족
   - DMZ 용도의 VPC와 Private Network 용도의 VPC 2개를 신청한다. 두 개의 VPC 간의 연결은 VPC Peering을 통해서 연결
@@ -1343,7 +1343,7 @@
     * 높은 보안 수준의 컨테이너 애플리케이션 구성
       + VPC로 네트워크를 구분하고 Reverse Proxy를 활용하여 외부 위협으로부터 Private Network 자원을 보호
 
-#### 25. Microservice with Kubernetes
+### 25. Microservice with Kubernetes
   - 클라이언트의 요청은 Load Balancer를 통해서 VM/Container Workload 및 API Gateway 서비스에 전달
   - API 요청을 제외한 클라이언트의 요청은 Kubernetes engine에서 제공되는 ingress에 전달
   - 클라이언트의 API 요청 처리를 위해 API Gateway는 최전방에 위치하여 외부로부터 들어오는 모든 API 호출에 대해 인증 및 서비스 라우팅 처리를 수행
@@ -1354,18 +1354,18 @@
     * 글로벌 제조사의 개발 플랫폼 사례
       + Microservice 기반의 Application 개발을 위한 API Gateway, DevOps, Kubernetes 기반 컨테이너 서비스를 제공
 
-#### 26. Container기반 CI/CD Pipeline
+### 26. Container기반 CI/CD Pipeline
   - Container 기반의 CI/CD Pipeline은 개발 생산성을 높이기 위하여 애플리케이션 개발 편리성과 협업 효율성을 지원하는 통합 개발 환경을 제공
   - 사용사례
     * 불량 분석 시스템의 개발 환경
     * 경영 정보 시스템을 컨테이너로 전환하기 위한 개발 환경
 
-#### 27. DevOps Service를 활용한 개발계, 검증계, 운영계 CI/CD 환경
+### 27. DevOps Service를 활용한 개발계, 검증계, 운영계 CI/CD 환경
   - 개발, 검증, 운영계 아키텍처 구성을 위해 DevOps Service를 이용하여 DevOps의 주요 툴을 통합 연계하고, 빌드/배포 파이프라인 자동 구성 및 다양한 배포 방식 등의 편의 기능을 사용
   - 사용사례
     * 물류 통합단말 시스템 빌드/배포환경 구축시간 단축
 
-#### 28. Legacy Container의 Migration
+### 28. Legacy Container의 Migration
   - Kubernetes를 통하여 컨테이너 배포, 관리, 확장 등 컨테이너 기반 애플리케이션에 대한 다양한 작업을 자동화하여 구축/운영 가능
   - Kubernetes Engine은 컨테이너화된 애플리케이션을 배포/관리할 수 있는 플랫폼
   - 기존 Kubernetes 환경에서 사용중인 Storage를 Samsung Cloud Platform 환경으로
@@ -1377,7 +1377,7 @@
     * Kubernetes Manifest 파일을 관리하고 있지 않는 환경에서의 이관 작업
       + 기존 Kubernetes 클러스터 환경에서 Manifest 파일을 추출하여 Samsung Cloud Platform의 Kubernetes Engine 클러스터에 이관 작업을 진행
 
-#### 29. Cloud기반 고가용성 DBMS 구성
+### 29. Cloud기반 고가용성 DBMS 구성
   - 클라이언트는 VIP(Virtual IP) 또는 DNS질의를 통해 Database서비스를 신청
   - VIP나 DNS는 이중화된 Database 구성에서 현재 Active Node 정보를 알고 있으며, Active Node로 사용자의 요청을 전달
   - Active Database 에서 생성되거나 변경된 Database 정보는 Block Storage에 쓰여지게 되며 쓰여진 데이터는 Standby Node로 동기화되어 저장
@@ -1386,7 +1386,7 @@
     * 다양한 기업 솔루션(물류, RPA, 업무 자동화)에서 Database 활용
     * 인프라, DB 장애 시 DB서비스 연속성 보장
 
-#### 30. Database Replica를 활용한 DR 구성
+### 30. Database Replica를 활용한 DR 구성
   - MariaDB(DBaaS), MySQL(DBaaS), PostgreSQL(DBaaS), EPAS(DBaaS)에 대해 Replica 기능을 활용
   - Replica는 DB가 가진 자체 데이터 복제 기능을 통해 별도의 노드를 활용하여 읽기 전용 DB를 생성해 주는 기능
   - 운영환경은 DB 이중화 구성 또는 단일 구성에서 모두 Replica 구성이 가능
@@ -1395,7 +1395,7 @@
     * 재해, 재난 발생시 서비스 연속성 보장
     * DB 데이터의 소산, 보관
 
-#### 31. 대용량 데이터처리 아키텍처
+### 31. 대용량 데이터처리 아키텍처
   - 분석 전용 Database인 Vertica(DBaaS) 를 활용하여 DW형 Database Service를 제공
   - 서비스 지속성을 위해서 RDB는 HA, NoSQL은 Cluster로 구성하여 사용자가 원하는 다양한 데이터를 저장
   - Cache서비스인 Redis(DBaaS)를 이용하여 콘텐트를 사용자에게 빠르게 제공하고, 세션 정보를 저장하여 처리시간을 단축
@@ -1408,7 +1408,7 @@
     * 모니터링 시스템 구축
     * 데이터 중심 병원
 
-#### 32. AI/ML을 활용한 MLOps 구축
+### 32. AI/ML을 활용한 MLOps 구축
   - Kubeflow는 이러한 ML Workflow를 지원하는 Kubernetes 기반 오픈 소스 Machine Learning 플랫폼
   - Kubeflow는 ML Workflow 각 영역을 Kubernetes 기반의 여러 오픈 소스들(istio, knative, argo 등)을 적절히 조합하여 확장성 있게 제공
   - AI&MLOps Platform 상품 설치를 위해서 Kubernetes Cluster가 필요
@@ -1418,7 +1418,7 @@
     * AI&MLOps Platform 기반 생산 공정 불량 판정 시스템 구축
     * MLOps 기반 모델 개발 및 운영 배포 체계 개발
 
-#### 33. CloudML 기반 AI 분석환경 구성
+### 33. CloudML 기반 AI 분석환경 구성
   - CloudML은 자동화 된 모델 라이프사이클 관리를 위해 Kubernetes 기반으로 모듈화된 서비스를 제공하는 Samsung Cloud Platform 상품의 명칭
   - CloudML은 Notebook, Studio, Pipeline, Experiments 상품으로 구성되어 있으며 각 상품을 설치하여 연동하기 위해서는 Kubernetes Cluster가 필요
   - CloudML 상품에서 분석 데이터 셋, 모델 파일 활용 및 저장 용도로 Object Storage를 연계 가능
@@ -1426,7 +1426,7 @@
     * No-Code AI 기반 시각화된 협업 분석 시스템 구축
     * 분석 플랫폼 도입을 통한 모델 최적화 자동화
 
-#### 34. 실시간 Data Streaming 서비스
+### 34. 실시간 Data Streaming 서비스
   - Data Stream Source
     * 대량의 Data Stream이 발생하는 원천으로 모바일을 비롯한 IoT Device, 제조 설비의 Sensor, SNS Application, System Server의 Log와 같은 다양한 사례 존재
   - Data Stream Ingestion
@@ -1446,7 +1446,7 @@
     * 제조업 설비관리 실시간 이상 모니터링
     * 이상 금융거래 실시간 탐지(Real-time Fraud Detection)
 
-#### 35. Cloud Hadoop 기반 데이터 플랫폼
+### 35. Cloud Hadoop 기반 데이터 플랫폼
   - Cloud Hadoop은 Hadoop 에코시스템의 주요 컴포넌트들을 패키징하여 제공하며, 관리 기능을 위한 Manager를 제공
   - 대용량 데이터 적재·활용을 위한 다양한 Data Storage를 지원
   - Data Processing: Hive, Spark 와 Impala를 이용하여 대용량 데이터를 분산 처리, 정제(Refine), 준비(Preparation)
@@ -1458,7 +1458,7 @@
     * 데이터 레이크 구축
     * 데이터 플랫폼 구축
 
-#### 36. Quick Query 기반 대화형 쿼리 서비스
+### 36. Quick Query 기반 대화형 쿼리 서비스
   - Quick Query는 대용량 데이터를 표준 SQL을 사용하여 간편하고 빠르게 분석할 수 있는 대화형 쿼리 서비스
   - Kubernetes Engine 클러스터 환경에서 단독으로 사용하거나, 다른 애플리케이션 S/W와 함께 사용 가능
   - Quick Query를 통해 다양한 데이터소스(RDB, Cloud Hadoop, Object Storage 등)의 데이터를 조회하거나 이 기종간 데이터 조인을 수행
@@ -1472,7 +1472,7 @@
     * 설비 공정 로그데이터의 조회 및 변환
       + 설비 공정에서 생성된 CSV 포맷의 로그 데이터가 Object Storage에 저장되어 있는 경우 별도의 데이터 수집 작업 없이 Quick Query에서 SQL로 바로 조회가 가능
 
-#### 37. Data Catalog 기반 데이터 자산 통합관리 시스템 구축
+### 37. Data Catalog 기반 데이터 자산 통합관리 시스템 구축
   - Data Catalog는 기업 내 모든 데이터 자산의 메타데이터를 수집하여 통합 관리함으로써 다양한 사용자들이 데이터를 더욱 효과적으로 활용할 수 있도록 지원하는 서비스
   - 수집된 메타데이터를 체계적으로 관리할 수 있도록 통합검색 API를 제공
   - Apache Ranger와 Apache Atlas의 데이터 분류 및 계보 기능을 활용하여 사용자에게 일관된 접근 및 보안체계를 제공
@@ -1481,7 +1481,7 @@
     * 통합검색 API를 통한 데이터 분석 플랫폼 구축
     * 데이터 분류 및 Policy 기능을 활용한 데이터 자산관리 시스템 구축
 
-#### 38. Data Warehouse Database 기반 분석
+### 38. Data Warehouse Database 기반 분석
   - VMWare Greenplum 기반의 DW형 Database Service를 제공
   - DW DB 데이터 외 필요한 데이터들에 대해 추출/변환/적재 및 스케줄링을 수행
   - DW DB(Greenplum) 내에서 데이터를 조회하고 분석
@@ -1490,7 +1490,7 @@
     * 제조업 데이터 분석
     * 금융 데이터 분석
 
-#### 39. Data Ops 기반 워크플로우 작성 및 관리
+### 39. Data Ops 기반 워크플로우 작성 및 관리
   - System Manager는 주기적, 반복적으로 발생하는 데이터 처리 작업에 대해 워크플로우를 작성하고 작업 스케줄링을 자동화하는
 Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비스
   - Ops Manager는 주기적, 반복적인 데이터 처리 작업(추출/적재/변환/정제)의 워크플로우 관리를 위해 Data Ops 상품을 신청
@@ -1503,7 +1503,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
     * 엔터프라이즈 스케줄링
       + Command shell, API, 엔터프라이즈 실행 컨테이너와 연계함으로써, 기존 어플리케이션 도구와 함께 스케줄링
 
-#### 40. Data Flow 기반 시스템간 대용량 데이터 전송 자동화
+### 40. Data Flow 기반 시스템간 대용량 데이터 전송 자동화
   - Data Flow는 다양한 데이터 소스로부터 데이터를 추출하고, 스트림/배치 데이터의 변환/전송에 대한 처리 흐름을 시각적으로 작성하는 데이터 처리 흐름 도구로, 오픈소스 Apache NiFi를 제공
   - Data Flow 서비스는 Apache NiFi를 기반으로 GUI를 통해 다양한 프로세서들의 Flow의 작성 및 스케줄링이 가능하고 데이터 처리 흐름을 시각적으로 확인 가능
   - 수집, 변환된 데이터는 Cloud Hadoop, PostgreSQL(DBaaS), Object Storage 등에 전송되어 저장
@@ -1519,7 +1519,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
       + Flow Manager 내 사용성이 높은 Flow Template을 초기 제공
       + 사용자가 추가로 Custom Flow Template을 등록, 배포 가능
 
-#### 41. KMS를 활용한 키 관리 및 암복호화
+### 41. KMS를 활용한 키 관리 및 암복호화
   - 고객이 암호화 키를 안전하게 생성, 보관, 관리할 수 있도록 제공하는 Managed Service 상품으로, 안정적인 중앙 집중 암호화 키 관리 방식의 서비스
   - KMS 관리자에 의해 생성된 마스터키는 폐쇄된 별도 네트워크 망에 구성된 안전한 HSM에 저장하여 관리
   - 사용자는 애플리케이션에서 평문 데이터를 저
@@ -1532,7 +1532,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
       + 공개키 방식의 암호화를 이용하여 인증을 위한 서명/검증 값을 쉽게 얻을 수 있음
       + 대칭키 사용 대비 기밀성이 높으며 탈취로 인한 문제도 해결 가능
 
-#### 42. Serverless를 활용한 Backend API 개발
+### 42. Serverless를 활용한 Backend API 개발
   - Cloud Functions와 Samsung Cloud Platform의 서비스들을 조합
   - Cloud Functions는 클라우드에서 함수 형태의 애플리케이션을 빠르게 만들어서 실행하기 위한 서비스      
   - PostgreSQL(DBaaS) 상품 서비스를 신청하여 애플리케이션을 위한 Data를 구성
@@ -1546,7 +1546,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
     * 이벤트 알림 기능 개발
       + Cloud Functions 서비스를 활용하면 알림 기능에 필요한 이벤트 처리(Trigger, Process, Send)를 손쉽게 개발 가능
 
-#### 43. Data Wrangler 서비스 기반 데이터 가공
+### 43. Data Wrangler 서비스 기반 데이터 가공
   - Data Wrangler는 SQL 또는 데이터 엔지니어링의 지식과 경험이 부족한 비전문가가 분석을 위한 데이터를 쉽고 빠르게 준비 할 수 있도록 데이터 정제, 변환, 병합(Join) 등의 기능을 제공
   - Data Wrangler는 Apache Spark을 기반으로 하고 있으며, Spark on Kubernetes를 통해 사용자 마다 별도의 Spark Engine을 기동하여 할당
   - 정제가 끝난 데이터는 Cloud Hadoop, RDBMS 등에 저장할 수 있으며, 저장된 데이터를 다시 추출하여 사용 가능
@@ -1557,7 +1557,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
     * 이기종 데이터 병합
       + Data Wrangler는 서로 다른 Data Source에서 추출한 데이터를 병합(Join) 하여 정제, 변환 가능
 
-#### 44. Text API를 활용한 요약 및 유사도 분석 수행
+### 44. Text API를 활용한 요약 및 유사도 분석 수행
   - Text API는 사전 학습된 언어 모델을 기반으로 문장 및 텍스트의 의미를 이해하고 분석해주는 API를 제공하는 서비스
   - Summary API, STS(Semantic Textual Similarity) API와 같은 자연어 처리 관련 API를 제공
   - 로컬 개발환경 혹은 기존 On-premises 시스템에서도 Direct Connect, Transit Gateway를 통해 SCP와 연결되어 있다면 SCP 사용자 인증키 관리 기능에서 인증키 (AccessKey, SecretKey) 생성 후, Text API를 호출 가능
@@ -1569,7 +1569,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
       + Text API를 활용하면 기존 VoC들을 Summary API로 요약 후, STS API를 활용하여 유사 VoC 검색을 통해 업무를 보다 효율적으로 수행하는 시스템 구축
     * Text API로 텍스트 데이터를 전처리 후 AI&MLOps Platform을 활용해 모델 확장 개발
 
-#### 45. Vision API를 활용한 얼굴 인식 수행
+### 45. Vision API를 활용한 얼굴 인식 수행
   - Vision API는 삼성SDS의 AI 영상 분석 솔루션을 기반으로 이미지 내의 여러 정보들을 인식하고 분석하는 API를 제공하는 서비스
   - 사전에 Object Storage 상품을 활용하여 분석 대상 파일을 업로드한 후 Vision API에 이를 분석 요청 가능
   - 로컬 개발환경 혹은 기존 On-premises 시스템에서도 Direct Connect, Transit Gateway를 통해 SCP과 연결되어 있다면 SCP 사용자 인증키 관리 기능에서 인증키 (AccessKey, SecretKey) 생성 후, Vision API를 호출 가능
@@ -1580,7 +1580,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
     * Vision API를 활용한 Self 체크인 시스템 구축
     * Vision API로 인물 이미지를 전처리 후 AI&ML Platform을 활용한 모델 개발
 
-#### 46. 웹 호스팅
+### 46. 웹 호스팅
   - Virtual Server와 MySQL(DBaaS), Redis(DBaaS) 등을 이용하여 쉽고 빠르게 WordPress 환경을 구성하고 웹사이트를 구축 및 호스팅
   - 최신 버전의 WordPress, Apache web server, PHP 7, OPcache를 설치
   - 데이터베이스의 읽기 부하가 큰 경우, 데이터베이스 앞 단에 Redis(DBaaS) 서비스를 구성하여 자주 호출되는 데이터를 캐시로 제공
@@ -1591,7 +1591,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
       + 사용한 만큼만 지불
     * 사용량 변화에 유연한 대응이 가능한 웹 서비스 인프라
 
-#### 47. WAF를 활용한 웹 서비스 보호
+### 47. WAF를 활용한 웹 서비스 보호
   - 웹 사이트의 트래픽을 모니터링 하여 방화벽 및 IDS가 차단하지 못한 공격으로부터 웹 애플리케이션을 안전하게 보호하는 서비스
   - 웹 사이트의 취약점을 노리는 HTTP(S) 기반 보안 위협을 신속하게 탐지하고 차단
   - SQL Injection 또는 Cross-Site Scripting(XSS)과 같은 일반적인 공격 패턴을 차단하는 보안 Rule 그리고 사용자가 정의한 특정 트래픽 패턴을 필터링하는 Rule을 생성
@@ -1601,7 +1601,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
   - 사용사례
     * 기업용/고객용 Web 서비스 보호
 
-#### 48. Private Cloud를 활용한 고객 전용 클라우드 아키텍처
+### 48. Private Cloud를 활용한 고객 전용 클라우드 아키텍처
   - 빠른 응답 속도가 필요하거나 강력한 데이터 보안 통제가 필요한 고객 On-premises 애플리케이션의 서비스 및 확장에 활용
   - SCP의 데이터 센터와 고객 On-premises 데이터 센터 간 전용선 연결을 통해 고객 현장에 구성된 클라우드 자원을 SCP Console과 연동
   - 고객 On-premises 데이터 센터의 legacy system과 On-site Zone 간 Direct Connect 구성을 통해 네트워크를 확장
@@ -1610,7 +1610,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
     * 고객 기존 시스템과의 빠른 응답 속도를 요구하는 애플리케이션
       + 고객의 Legacy 시스템은 Direct Connect를 통해 손쉽게 On-site Zone에 배포된 클라우드 환경으로 확장되어 하이브리드 형태의 클라우드 구성이 가능
 
-#### 49. AICR을 활용한 문서 분석
+### 49. AICR을 활용한 문서 분석
   - 딥러닝 기반의 이미지 인식 기술을 바탕으로 문서 형태의 이미지로부터 데이터를 추출하는 서비스
   - Object Storage 상품을 신청하여 분석 대상 파일을 업로드한 후, AICR API에 분석 요청을 하고 결과를 파일로 저장하여 확인 가능
   - 로컬 개발환경 혹은 기존 Legacy 시스템에서도 SCP에 접근할 수 있다면 SCP 사용자 인증키 관리 기능에서 인증키(AccessKey, SecretKey)를 생성 후, AICR API를 호출 가능
@@ -1621,7 +1621,7 @@ Apache Airflow 기반의 관리형 워크플로우 오케스트레이션 서비�
     * AICR를 활용한 물류 인보이스 자동 인식 시스템 구축
     * AICR로 문서 이미지를 전처리 후 AI Platform을 활용한 모델 개발
 
-#### 50. Terraform을 활용한 클라우드 서비스 배포
+### 50. Terraform을 활용한 클라우드 서비스 배포
   - 인프라 자원을 구성 및 관리 할 수 있도록 지원하는 IaC(Infrastructure as a Code) 도구
   - Terraform 작업을 위한 인증키를 생성하고 환경설정을 진행  
   - 배포환경에 대한 Provider를 외부 저장소로부터 가져온다 ($terraform init)
