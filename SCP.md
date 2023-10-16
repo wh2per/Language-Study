@@ -695,7 +695,7 @@
   - `VM 이용요금 외에 별도의 추가 요금 없이 제공`
   - SQream DB 라이센스 요금은 마켓플레이스에서 제공
 
-#### Quick Query
+### Quick Query
   - `Object Storage에 저장된 데이터를 빠르게 분석하는 대화형 쿼리 서비스`
   - `표준 SQL`을 사용
   - 대규모 병렬 처리(MPP) 기반의 쿼리 엔진(`Trino 엔진`)
@@ -705,7 +705,7 @@
   - `오픈소스`이며 VMware의 데이터 솔루션
   - `PostgreSQL Database 기반`의 대규모 데이터 병렬처리 분석 플랫폼
 
-### Apache Hadoop
+#### Apache Hadoop
   - 빅데이터 처리를 위하여 클러스터에서 동작하는 자바기반 분산 처리 프레임워크
   - Hadoop Common, HDFS, YARN, MapReduce, 다양한 에코시스템
 
