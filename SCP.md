@@ -238,6 +238,7 @@
 ### Virtual Server `약정`
   - 오픈소스는 community 버전 제공
   - 서버 사양 변경, Auto Scaling, 사용자 이미지 생성, Multi-AZ, Placement Group 가능
+  - VM의 `서브넷/IP는 최초 생성시 설정된 값을 간편하게 변경 가능`
   - 과금 : 무약정(시간단위), 약정(월단위)
   - 미터링 : VM의 on/off 상태에 따라 실사용 시간 산정
   - `Public IP : 시간당 5.6원`
@@ -261,7 +262,7 @@
   - 미들웨어 SW는 오픈소스 무료, 자동 설치(Compiler, MPI Library, Job Scheduler)
   - Head Node Group은 Cluster를 관리하는 Head Node로 구성, Slurm Control 데몬이 설치됨
   - Compute Node Group은 실제 계산이 수행되는 BM기반 Compute Node로 구성, Slurm Compute Node 데몬이 설치됨
-  - File Storage를 Head Node, Compute Node의 공유 스토리지로 사용
+  - `File Storage`를 Head Node, Compute Node의 `공유 스토리지로 사용`
   - `IaaS 비용은 사용량 기반 별도 부과`
 
 ### FaaS
@@ -278,6 +279,7 @@
 ### Block storage
   - 직접 서버에 할당하여 사용
   - `대용량의 데이터 저장`이 요구
+  - 타 Region에 원본 Block Storage(BM)을 복제하는 DR 복제 기능을 제공
   - VM에서 사용
     * Virtual Server 기본 OS, 추가 스토리지, Database 상품 등에 연결되어 사용
     * 사용자 볼륨 온라인 할당, 증설, 해제
@@ -285,7 +287,7 @@
     * Bare Metal Server 추가 스토리지에 연결
     * `Multi-Attach되어 공유 볼륨 구성 가능`(높은 가용성 보장을 위해 복수의 서버를 적용하는 기능)
     * 암호화 기능 제공
-  - 볼륨사이즈 : 160TB
+  - 볼륨사이즈 : 168TB(VM), 무제한(BM)
   - 최대 IOPS : 16,000 I/O
   - 최대 처리량 : 250MB/S
   - 암호화 제공
@@ -293,7 +295,9 @@
 
 ### File storage
   - `다수 클라이언트에 대한 접근성을 높여` 데이터 저장/공유
+  - 이기종 클라이언트에 데이터 엑세스를 제공하는 파일 수준의 스토리지
   - 웹 콘텐츠 관리, 빅데이터 분석
+  - 타 Region에 원본 File Storage를 복제하는 DR 복제 기능을 제공
   - Virtual Server, Kubernetes Worker Node 등 `SCP 자원간 파일 공유`
   - Linux 간 파일 공유(NFS), Windows 간 파일 공유(CIFS)를 위한 프로토콜 지원
   - 볼륨사이즈 : 100TB
@@ -306,9 +310,10 @@
   - BS와 FS에 저장된 데이터 중 `자주 사용하지 않는 데이터를 보관`
   - Back-up 대비 경제적 비용
   - 웹 기반 파일 업다운로드
+  - Multi-AZ 기능 제공
   - 볼륨사이즈 : 2PB
   - S3 API 제공
-  - SSE-S3 방식 암호화
+  - Amazon S3 관리 키 (SSE-S3) 암호화 사용, 버킷 기본 암호화 제공 (AES-256알고리즘)
   - 서비스 `사용량 기준 35원/GB`
 
 ### Back-up
@@ -550,6 +555,7 @@
   - `SW를 이미지화하여 제공`
   - 컨테이너 이미지를 클러스터에 손쉽게 배포
   - 컨테이너 일체형 구동 환경 지원
+  - BYOL
   - `Tomcat, Wildfly, NGINX, Apache HTTP Server → 무료`, `상용 SW → BYOL`
 
 ### Container Registry
@@ -674,6 +680,8 @@
 
 ### Vertica (DBaaS) `약정`
   - Masterless 클러스터의 분산 아키텍처
+  - Vertica는 분산 프로세싱을 통해 쿼리를 처리
+  - 특정 노드 장애 시 쿼리가 수행되지 않는 `SPOF가 발생하지 않음`
   - 컬럼기반 저장 기술, 빠른 적재 기술 제공
   - `BYOL 적용 제품`
   - 무약정(시간단위), 약정(월단위) * `OS는 레드햇 기준, DB Managed 및 Carepack은 별도 부과`
@@ -702,7 +710,7 @@
   - Hadoop Common, HDFS, YARN, MapReduce, 다양한 에코시스템
 
 ### Cloud Hadoop `약정`
-  - 아파치 하둡 클러스터를 관리형으로 제공
+  - 빅데이터 처리 및 분석에 활용하는 아파치 하둡 클러스터를 관리형으로 제공
     * 초기 설치 : `HDFS, YARN, HBASE, HIVE, TEZ, Hue, Solr, Spark, LIVY`
   - 다양한 오픈소스 에코 시스템 지원
     * 추가 설치 : `ZooKeeper, Atlas, Ranger, KERBEROS, Kafka, Flume, Sqoop, Oozie, Kudu, Impala`
