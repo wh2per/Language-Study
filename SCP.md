@@ -700,12 +700,12 @@
   - `표준 SQL`을 사용
   - 대규모 병렬 처리(MPP) 기반의 쿼리 엔진(`Trino 엔진`)
 
-#### Greenplum (DBaaS) `약정`
+### Greenplum (DBaaS) `약정`
   - 엔터프라이즈 분석을 위한 `대용량 정형 및 비정형 데이터 분석 플랫폼`
   - `오픈소스`이며 VMware의 데이터 솔루션
   - `PostgreSQL Database 기반`의 대규모 데이터 병렬처리 분석 플랫폼
 
-#### Apache Hadoop
+### Apache Hadoop
   - 빅데이터 처리를 위하여 클러스터에서 동작하는 자바기반 분산 처리 프레임워크
   - Hadoop Common, HDFS, YARN, MapReduce, 다양한 에코시스템
 
