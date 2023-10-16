@@ -328,7 +328,7 @@
 
 <hr/>
 
-# DB → `약정/무약정` 
+# DB → `약정/무약정`
 ### Database Service(DBaaS) `약정`
   - Database를 즉시 사용할 수 있도록 Database 자원과 자원운영을 서비스 형태로 제공
   - `RDB : EPAS, PostgreSQL, MariaDB, MySQL, MS SQL Server, Tibero`
@@ -362,7 +362,7 @@
 
 #### Database 별 제공 기능 리스트
   - 대부분 High Availability, Read Replica, Minor Patch, 파라미터 설정, Audit 설정 가능    
-  - `Tibero,Redis는 Read Replica 안됨`
+  - `Tibero, Redis는 Read Replica 안됨`
   - `Redis는 Audit 안됨`
 
 #### RDB Database의 HA 구성
@@ -379,7 +379,7 @@
 
 <hr/>
 
-# Network → `무약정` 
+# Network → `무약정`
 ### VPC
   - 일반(Public, Private), 로컬 서브넷단위
   - `프로젝별 최대 5개 VPC 생성` 가능
@@ -440,7 +440,7 @@
   - SCP와 On-Premises를 `Hybrid Cloud로 구성하는 서비스에 부하 분산`
   - Ratio, Round Robin 알고리즘 방식
   - 도메인 요금 : `도메인 레코드별 사용시간`
-    Health Check 요금 : `Health Check 리소스별 사용시간`
+  - Health Check 요금 : `Health Check 리소스별 사용시간`
 
 ### Global CDN
   - 사용자에게 가장 가까운 웹서버를 이용하도록 함
@@ -451,7 +451,7 @@
 
 <hr/>
 
-# Security → `약정/무약정` 
+# Security → `약정/무약정`
 ### WAF `약정`
   - HTTP/HTTPS
   - SQL Injection, XSS, File Include, File Up/Download, Web Scan 등 공격 분류
@@ -495,11 +495,12 @@
   - 서명/검증 (ECDSA)
   - 사용자는 KMS를 통해 생성된 마스터키 활용, 데이터를 암호화하는 데이터키를 직접 생성
   - 키 라이크 사이클 관리 (`키 회전(1~730일), 키 삭제(72시간 후), 키 사용이력`)
+    * 기본 90일
   - `보유키 개수 + 키 호출 건수` → 과금
 
 <hr/>
 
-# DevOps → `무약정` 
+# DevOps → `무약정`
 ### DevOps Service
   - `클러스터 대상 뿐만 아니라 VM 서버 대상 배포 자원으로 통합 관리 가능`
   - Artifact Repository 내 방화벽이 외부로 오픈되어 있어 `별도 저장 없이 인터넷 라이브러리 사용 가능`
@@ -540,7 +541,7 @@
   - 자동화된 복구 및 시크릿 구성 관리    
 
 ### Kubernetes Engine
-  - `Kubernetes Cluster 제공`
+  - Kubernetes Engine은 경량화 된 가상 컴퓨팅인 컨테이너와 이를 관리하기 위한 `Kubernetes 클러스터를 제공`하는 서비스
   - 기본 제공하는 Kubernetes Control Plane을 통해 별도 구성없이 표준 Kubernetes 환경 사용 가능
   - 다른 표준 Kubernetes 환경의 애플리케이션과 호환
   - `시간당 100원, worker nodes 별도`
@@ -553,7 +554,7 @@
 
 ### Container Registry
   - `컨테이너 이미지 저장, 관리, 공유`
-  - Object Storage와 연동하여 효율적 이미지 관리
+  - `Object Storage와 연동`하여 효율적 이미지 관리
   - 암호화된 저장, HTTPS 사용, IAM 리소스 기반 접근 권한 관리
   - Registry용 Storage : `GB당 120원`, Container Image Scan : `건당 150원`
 
@@ -569,6 +570,9 @@
 
 ### AI & MLOps Platform
   - `사용자가 직접 Kuberflow 기반 MLOps 환경을 생성 및 운용 가능한 환경 제공`
+  - 머신러닝 모델의 개발, 학습, 배포 과정 전체 파이프라인의 반복적인 작업을 자동화하는 머신러닝 플랫폼
+  - Kubernetes 기반으로 다양한 오픈소스와의 연계가 편리
+  - `TensorFlow, PyTorch, scikit-learn, Keras` 등 다양한 머신러닝 프레임워크를 지원하는 표준화된 환경을 제공
   - Kuberflow Mini : vCPU 24, Memory 96G 이상
     AI & MLOps Platform : vCPU 36, Memory 128G 이상
   - `모델 개발환경 및 튜닝`
@@ -612,7 +616,7 @@
 ### Text API
   - 문장 및 텍스트의 의미를 이해하고 분석
   - `Summary API`(요약), `STS API`(유사도)
-  - 생성요약 방식으로 문장 내 중요정보 포함 및 자연스러운 내용 요약
+  - 생성요약 방식으로 문장 내 중요 정보 포함 및 자연스러운 내용 요약
   - 검색 엔진, VOC, 추천 시스템 등
   - `API 별 호출 건수에 따라 과금(월단위)`
 
