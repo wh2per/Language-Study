@@ -675,7 +675,7 @@
   - `Logstash` : 데이터를 필터를 통해 변환 후 Elasticsearch로 전송
   - `Elasticsearch` : 아파치 루씬 기반의 full text로 검색이 가능한 오픈소스 분석 엔진
   - `Kibana` : 데이터 처리 환경 및 데이터 시각화 플랫폼
-  - VM환경에서 동작, VPC 기반의 단일 인스턴스 or 클러스터 구성
+  - `VM 환경에서 동작`, VPC 기반의 단일 인스턴스 or 클러스터 구성
   - 무약정(시간단위), 약정(월단위) * `OS는 리눅스 기준`
 
 ### Vertica (DBaaS) `약정`
