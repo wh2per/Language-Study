@@ -1008,7 +1008,7 @@
     * VPC Peering
 
 ### 5. 성능 모니터링
-  - `Clound Monitoring`    
+  - `Cloud Monitoring`    
 
 <hr/>
 
