@@ -567,19 +567,19 @@
 <hr/>
 
 # AI → `무약정`
-#### Kuberflow
+#### Kubeflow
   - `Kubernetes 기반`의 MLOps 환경을 제공하는 `오픈소스 Machine Learning 플랫폼`
-  - 자사의 AI 플랫폼과 Kuberflow 연계 상품 제공
+  - 자사의 AI 플랫폼과 Kubeflow 연계 상품 제공
   - ML 영역별 최적의 오픈소스 조합을 다양한 인프라에서 제공
   - `재사용 가능한 컴포넌트 기반의 Pipeline으로 End-to-End ML workflow 수행`
   - 모델 개발 → 모델 학습 → 모델 튜닝 → 모델 서빙 → 모델 관리
 
 ### AI & MLOps Platform
-  - `사용자가 직접 Kuberflow 기반 MLOps 환경을 생성 및 운용 가능한 환경 제공`
+  - `사용자가 직접 Kubeflow 기반 MLOps 환경을 생성 및 운용 가능한 환경 제공`
   - 머신러닝 모델의 개발, 학습, 배포 과정 전체 파이프라인의 반복적인 작업을 자동화하는 머신러닝 플랫폼
   - Kubernetes 기반으로 다양한 오픈소스와의 연계가 편리
   - `TensorFlow, PyTorch, scikit-learn, Keras` 등 다양한 머신러닝 프레임워크를 지원하는 표준화된 환경을 제공
-  - Kuberflow Mini : vCPU 24, Memory 96G 이상
+  - Kubeflow Mini : vCPU 24, Memory 96G 이상
     AI & MLOps Platform : vCPU 36, Memory 128G 이상
   - `모델 개발환경 및 튜닝`
     * Jupyter Lab, Rstudio, Visual Studio Code
